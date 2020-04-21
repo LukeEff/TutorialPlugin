@@ -10,3 +10,8 @@ commands:
     usage: /sword
     permission: tutorialplugin.sword
     permission-message: No permission!
+  halfhealth:
+    description: Sets health to 5 hearts.
+    usage: /halfhealth
+    permission: tutorialplugin.halfhealth
+    permission-message: No permission!

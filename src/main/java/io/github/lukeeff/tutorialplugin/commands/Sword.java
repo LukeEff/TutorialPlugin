@@ -1,5 +1,7 @@
 package io.github.lukeeff.tutorialplugin.commands;
 
+import io.github.lukeeff.tutorialplugin.TutorialPlugin;
+import io.github.lukeeff.tutorialplugin.enchantments.EnchantmentCore;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -10,8 +12,14 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Sword implements CommandExecutor {
+
+    private final int thorLevel = 4;
 
 
 
@@ -50,7 +58,19 @@ public class Sword implements CommandExecutor {
      */
     private void givePlayerSword(Inventory playerInventory) {
         final ItemStack diamondSword = new ItemStack(Material.DIAMOND_SWORD);
+        setThorMeta(diamondSword);
+        diamondSword.addUnsafeEnchantment(TutorialPlugin.LIGHTNING, thorLevel);
         playerInventory.addItem(diamondSword);
+    }
+
+    private void setThorMeta(ItemStack sword) {
+        ItemMeta thorMeta = sword.getItemMeta();
+        List<String> lore = new ArrayList<>();
+        String thorLore = ChatColor.GRAY + EnchantmentCore.returnEnchantmentName(TutorialPlugin.LIGHTNING, thorLevel);
+        lore.add(thorLore);
+        thorMeta.setDisplayName(ChatColor.YELLOW + "Lightning sword");
+        thorMeta.setLore(lore);
+        sword.setItemMeta(thorMeta);
     }
 
     /**
