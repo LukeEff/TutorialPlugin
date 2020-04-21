@@ -1,0 +1,12 @@
+name: TutorialPlugin
+version: 1.0.0
+api-version: 1.15
+author: lukeeff
+description: A tutorial plugin.
+main: io.github.lukeeff.tutorialplugin.TutorialPlugin
+commands:
+  sword:
+    description: Give a diamond sword.
+    usage: /sword
+    permission: tutorialplugin.sword
+    permission-message: No permission!
